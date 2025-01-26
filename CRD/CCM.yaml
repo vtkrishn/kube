@@ -1,0 +1,31 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: customconfigmaps.vtkrishn.com
+spec:
+  group: vtkrishn.com
+  names:
+    kind: CustomConfigMap
+    plural: customconfigmaps
+    shortNames:
+    - ccm
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            apiVersion:
+              type: string
+            kind:
+              type: string
+            metadata:
+              type: object
+            spec:
+              type: object
+              properties:
+                test-property:
+                  type: string

@@ -1,0 +1,6 @@
+apiVersion: vtkrishn.com/v1
+kind: CustomConfigMap
+metadata:
+  name: my-test-resource-instance
+spec:
+  my-own-property: 'My first CRD instance'

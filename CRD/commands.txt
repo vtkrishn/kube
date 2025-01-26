@@ -1,0 +1,20 @@
+kubectl apply -f CCM.yaml
+kubectl apply -f CR.yaml
+
+
+kubectl get ccm     
+kubectl get customconfigmap
+kubectl get customconfigmaps
+
+docker build -t custom-controller:v1 .
+
+kubectl apply -f controller_deployment.yaml
+kubectl apply -f clusterrole.yaml
+kubectl apply -f clusterrolebinding.yaml
+kubectl apply -f serviceaccount.yaml
+
+
+minikube image load controller:v1
+minikube image ls
+
+ kc exec -it custom-controller-77dcb7f94d-plbtp -- bash

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      containers:
+      - name: python
+        image: local/python-app:latest
+        ports:
+          - name: http-port
+            containerPort: 8000
+          - name: app-port
+            containerPort: 9000
+        volumeMounts:
+          - name: python-vol
+            mountPath: /var/python_vol
+      volumes:
+        - name: python-vol
+          emptyDir: {}
